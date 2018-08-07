@@ -1,8 +1,0 @@
-{
-    "restructuredtext.updateOnTextChanged"    : "false",
-    "restructuredtext.languageServer.disabled": false,
-    "restructuredtext.confPath": "${workspaceRoot}",
-    "restructuredtext.linter.sphinxTextRoles": [
-        "csharp", "ts", "ref", "ctor", "html"
-      ]
-}
