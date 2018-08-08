@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <CoalesceSourcePath Condition="'$(CoalesceSourcePath)' == ''">$(SolutionDir)..\Coalesce\src</CoalesceSourcePath>
+  </PropertyGroup>
+  <Import  Project="$(CoalesceSourcePath)\Directory.Build.props" Condition="$(Configuration) == 'Debug'"/>
+</Project>

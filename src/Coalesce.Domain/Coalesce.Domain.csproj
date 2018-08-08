@@ -13,7 +13,8 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IntelliTect.Coalesce\IntelliTect.Coalesce.csproj" />
+    <ProjectReference Condition="$(Configuration) == 'Debug'" Include="$(CoalesceSourcePath)\IntelliTect.Coalesce\IntelliTect.Coalesce.csproj" />
+    <PackageReference Condition="$(Configuration) != 'Debug'" Include="IntelliTect.Coalesce" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="GenFu" Version="1.4.22" />

@@ -20,7 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Coalesce.Domain\Coalesce.Domain.csproj" />
-    <ProjectReference Include="..\IntelliTect.Coalesce.Knockout\IntelliTect.Coalesce.Knockout.csproj" />
+    <ProjectReference Condition="$(Configuration) == 'Debug'" Include="$(CoalesceSourcePath)\IntelliTect.Coalesce.Knockout\IntelliTect.Coalesce.Knockout.csproj" />
+    <PackageReference Condition="$(Configuration) != 'Debug'" Include="IntelliTect.Coalesce.Knockout" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' ">
