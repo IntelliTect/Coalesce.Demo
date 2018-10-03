@@ -1,39 +1,11 @@
 {
   "webProject": {
-    "projectFile": "./src/Coalesce.Web/Coalesce.Web.csproj",
-    "framework": "netcoreapp2.1",
-    "configuration": "Debug"
+    "projectFile": "./src/Coalesce.Web/Coalesce.Web.csproj"
   },
   "dataProject": {
-    "projectFile": "./src/Coalesce.Domain/Coalesce.Domain.csproj",
-    "framework": "netstandard2.0",
-    "configuration": "Debug"
+    "projectFile": "./src/Coalesce.Domain/Coalesce.Domain.csproj"
   },
 
 
-  "rootGenerator": "Knockout",
-
-  //"additionalRootGenerators": [
-  //  {
-  //    "assembly": "C:/blah/foo/bar/MyProject.MyGenerators.dll",
-  //    "type": "MyProject.MyGenerators.RootGenerator",
-  //  }
-  //],
-
-  "generatorConfig": {
-    "Views": {
-      "disabled": false
-      //"key": "value"
-    },
-    // Yo dawg, I heard you like configurable formatting. (4 spaces is actually the default)
-    "ApiController": {
-      "indentationSize": 4 
-    },
-    "ClassDto": {
-      "indentationSize": 4 
-    },
-    "ViewController" : {
-      "indentationSize": 4
-    }
-  }
+  "rootGenerator": "Knockout"
 }
