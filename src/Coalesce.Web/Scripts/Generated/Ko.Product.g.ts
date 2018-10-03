@@ -26,12 +26,12 @@ module ViewModels {
         
         public productId: KnockoutObservable<number | null> = ko.observable(null);
         public name: KnockoutObservable<string | null> = ko.observable(null);
-        public details: KnockoutObservable<ViewModels.ProductDetails | null> = ko.observable(null);
+        public address: KnockoutObservable<string | null> = ko.observable(null);
+        public city: KnockoutObservable<string | null> = ko.observable(null);
+        public state: KnockoutObservable<string | null> = ko.observable(null);
+        public postalCode: KnockoutObservable<string | null> = ko.observable(null);
         public uniqueId: KnockoutObservable<string | null> = ko.observable(null);
         
-        
-        /** Display text for Details */
-        public detailsText: KnockoutComputed<string>;
         
         
         
@@ -52,18 +52,13 @@ module ViewModels {
             this.myId = data.productId;
             this.productId(data.productId);
             // Load the lists of other objects
-            if (!data.details) { 
-                this.details(null);
-            } else {
-                if (!this.details()){
-                    this.details(new ProductDetails(data.details, this));
-                } else {
-                    this.details()!.loadFromDto(data.details);
-                }
-            }
             
             // The rest of the objects are loaded now.
             this.name(data.name);
+            this.address(data.address);
+            this.city(data.city);
+            this.state(data.state);
+            this.postalCode(data.postalCode);
             this.uniqueId(data.uniqueId);
             if (this.coalesceConfig.onLoadFromDto()){
                 this.coalesceConfig.onLoadFromDto()(this as any);
@@ -79,6 +74,10 @@ module ViewModels {
             dto.productId = this.productId();
             
             dto.name = this.name();
+            dto.address = this.address();
+            dto.city = this.city();
+            dto.state = this.state();
+            dto.postalCode = this.postalCode();
             dto.uniqueId = this.uniqueId();
             
             return dto;
@@ -106,19 +105,16 @@ module ViewModels {
             this.baseInitialize();
             const self = this;
             
-            this.detailsText = ko.pureComputed(function() {
-                if (self.details() && self.details()!.manufacturingAddress()) {
-                    return self.details()!.manufacturingAddress()!.toString();
-                } else {
-                    return "None";
-                }
-            });
             
             
             
             
             
             self.name.subscribe(self.autoSave);
+            self.address.subscribe(self.autoSave);
+            self.city.subscribe(self.autoSave);
+            self.state.subscribe(self.autoSave);
+            self.postalCode.subscribe(self.autoSave);
             self.uniqueId.subscribe(self.autoSave);
             
             if (newItem) {

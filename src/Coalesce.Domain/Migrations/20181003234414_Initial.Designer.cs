@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Coalesce.Domain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20180530231723_FixUniqueIdNameCollisionWithSqlType")]
-    partial class FixUniqueIdNameCollisionWithSqlType
+    [Migration("20181003234414_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.0-rtm-30799")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -141,7 +141,15 @@ namespace Coalesce.Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Address");
+
+                    b.Property<string>("City");
+
                     b.Property<string>("Name");
+
+                    b.Property<string>("PostalCode");
+
+                    b.Property<string>("State");
 
                     b.Property<Guid>("UniqueId")
                         .HasColumnName("ProductUniqueId");
@@ -181,67 +189,6 @@ namespace Coalesce.Domain.Migrations
                         .WithMany("Employees")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Coalesce.Domain.Product", b =>
-                {
-                    b.OwnsOne("Coalesce.Domain.ProductDetails", "Details", b1 =>
-                        {
-                            b1.Property<int?>("ProductId")
-                                .ValueGeneratedOnAdd()
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.ToTable("Product");
-
-                            b1.HasOne("Coalesce.Domain.Product")
-                                .WithOne("Details")
-                                .HasForeignKey("Coalesce.Domain.ProductDetails", "ProductId")
-                                .OnDelete(DeleteBehavior.Cascade);
-
-                            b1.OwnsOne("Coalesce.Domain.StreetAddress", "CompanyHqAddress", b2 =>
-                                {
-                                    b2.Property<int?>("ProductDetailsProductId")
-                                        .ValueGeneratedOnAdd()
-                                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                                    b2.Property<string>("Address");
-
-                                    b2.Property<string>("City");
-
-                                    b2.Property<string>("PostalCode");
-
-                                    b2.Property<string>("State");
-
-                                    b2.ToTable("Product");
-
-                                    b2.HasOne("Coalesce.Domain.ProductDetails")
-                                        .WithOne("CompanyHqAddress")
-                                        .HasForeignKey("Coalesce.Domain.StreetAddress", "ProductDetailsProductId")
-                                        .OnDelete(DeleteBehavior.Cascade);
-                                });
-
-                            b1.OwnsOne("Coalesce.Domain.StreetAddress", "ManufacturingAddress", b2 =>
-                                {
-                                    b2.Property<int?>("ProductDetailsProductId")
-                                        .ValueGeneratedOnAdd()
-                                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                                    b2.Property<string>("Address");
-
-                                    b2.Property<string>("City");
-
-                                    b2.Property<string>("PostalCode");
-
-                                    b2.Property<string>("State");
-
-                                    b2.ToTable("Product");
-
-                                    b2.HasOne("Coalesce.Domain.ProductDetails")
-                                        .WithOne("ManufacturingAddress")
-                                        .HasForeignKey("Coalesce.Domain.StreetAddress", "ProductDetailsProductId")
-                                        .OnDelete(DeleteBehavior.Cascade);
-                                });
-                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -247,7 +247,10 @@ export namespace Person {
 export interface Product extends Model<typeof metadata.Product> {
   productId: number | null
   name: string | null
-  details: ProductDetails | null
+  address: string | null
+  city: string | null
+  state: string | null
+  postalCode: string | null
   uniqueId: string | null
 }
 export class Product {
@@ -386,54 +389,6 @@ export class PersonStats {
   /** Instantiate a new PersonStats, optionally basing it on the given data. */
   constructor(data?: Partial<PersonStats> | {[k: string]: any}) {
       Object.assign(this, PersonStats.map(data || {}));
-  }
-}
-
-
-export interface ProductDetails extends Model<typeof metadata.ProductDetails> {
-  manufacturingAddress: StreetAddress | null
-  companyHqAddress: StreetAddress | null
-}
-export class ProductDetails {
-  
-  /** Mutates the input object and its descendents into a valid ProductDetails implementation. */
-  static convert(data?: Partial<ProductDetails>): ProductDetails {
-    return convertToModel(data || {}, metadata.ProductDetails) 
-  }
-  
-  /** Maps the input object and its descendents to a new, valid ProductDetails implementation. */
-  static map(data?: Partial<ProductDetails>): ProductDetails {
-    return mapToModel(data || {}, metadata.ProductDetails) 
-  }
-  
-  /** Instantiate a new ProductDetails, optionally basing it on the given data. */
-  constructor(data?: Partial<ProductDetails> | {[k: string]: any}) {
-      Object.assign(this, ProductDetails.map(data || {}));
-  }
-}
-
-
-export interface StreetAddress extends Model<typeof metadata.StreetAddress> {
-  address: string | null
-  city: string | null
-  state: string | null
-  postalCode: string | null
-}
-export class StreetAddress {
-  
-  /** Mutates the input object and its descendents into a valid StreetAddress implementation. */
-  static convert(data?: Partial<StreetAddress>): StreetAddress {
-    return convertToModel(data || {}, metadata.StreetAddress) 
-  }
-  
-  /** Maps the input object and its descendents to a new, valid StreetAddress implementation. */
-  static map(data?: Partial<StreetAddress>): StreetAddress {
-    return mapToModel(data || {}, metadata.StreetAddress) 
-  }
-  
-  /** Instantiate a new StreetAddress, optionally basing it on the given data. */
-  constructor(data?: Partial<StreetAddress> | {[k: string]: any}) {
-      Object.assign(this, StreetAddress.map(data || {}));
   }
 }
 

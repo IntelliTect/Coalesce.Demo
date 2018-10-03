@@ -889,13 +889,29 @@ export const Product = domain.types.Product = {
       type: "string",
       role: "value",
     },
-    details: {
-      name: "details",
-      displayName: "Details",
-      type: "object",
-      get typeDef() { return (domain.types.ProductDetails as ObjectType) },
+    address: {
+      name: "address",
+      displayName: "Address",
+      type: "string",
       role: "value",
-      dontSerialize: true,
+    },
+    city: {
+      name: "city",
+      displayName: "City",
+      type: "string",
+      role: "value",
+    },
+    state: {
+      name: "state",
+      displayName: "State",
+      type: "string",
+      role: "value",
+    },
+    postalCode: {
+      name: "postalCode",
+      displayName: "Postal Code",
+      type: "string",
+      role: "value",
     },
     uniqueId: {
       name: "uniqueId",
@@ -1043,62 +1059,6 @@ export const PersonStats = domain.types.PersonStats = {
     },
   },
 }
-export const ProductDetails = domain.types.ProductDetails = {
-  name: "productDetails",
-  displayName: "Product Details",
-  get displayProp() { return this.props.manufacturingAddress }, 
-  type: "object",
-  props: {
-    manufacturingAddress: {
-      name: "manufacturingAddress",
-      displayName: "Manufacturing Address",
-      type: "object",
-      get typeDef() { return (domain.types.StreetAddress as ObjectType) },
-      role: "value",
-      dontSerialize: true,
-    },
-    companyHqAddress: {
-      name: "companyHqAddress",
-      displayName: "Company Hq Address",
-      type: "object",
-      get typeDef() { return (domain.types.StreetAddress as ObjectType) },
-      role: "value",
-      dontSerialize: true,
-    },
-  },
-}
-export const StreetAddress = domain.types.StreetAddress = {
-  name: "streetAddress",
-  displayName: "Street Address",
-  get displayProp() { return this.props.address }, 
-  type: "object",
-  props: {
-    address: {
-      name: "address",
-      displayName: "Address",
-      type: "string",
-      role: "value",
-    },
-    city: {
-      name: "city",
-      displayName: "City",
-      type: "string",
-      role: "value",
-    },
-    state: {
-      name: "state",
-      displayName: "State",
-      type: "string",
-      role: "value",
-    },
-    postalCode: {
-      name: "postalCode",
-      displayName: "Postal Code",
-      type: "string",
-      role: "value",
-    },
-  },
-}
 export const WeatherData = domain.types.WeatherData = {
   name: "weatherData",
   displayName: "Weather Data",
@@ -1207,8 +1167,6 @@ interface AppDomain extends Domain {
     PersonCriteria: typeof PersonCriteria
     PersonStats: typeof PersonStats
     Product: typeof Product
-    ProductDetails: typeof ProductDetails
-    StreetAddress: typeof StreetAddress
     WeatherData: typeof WeatherData
   }
   services: {

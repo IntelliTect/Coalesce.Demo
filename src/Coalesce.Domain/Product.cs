@@ -14,24 +14,6 @@ namespace Coalesce.Domain
         [Search(SearchMethod = SearchAttribute.SearchMethods.Contains)]
         public string Name { get; set; }
 
-        public ProductDetails Details { get; set; }
-
-        [Column("ProductUniqueId")]
-        public Guid UniqueId { get; set; }
-    }
-
-    public class ProductDetails
-    {
-        [ListText]
-        public StreetAddress ManufacturingAddress { get; set; }
-
-        public StreetAddress CompanyHqAddress { get; set; }
-
-    }
-
-    public class StreetAddress
-    {
-        [ListText]
         public string Address { get; set; }
 
         public string City { get; set; }
@@ -40,5 +22,7 @@ namespace Coalesce.Domain
 
         public string PostalCode { get; set; }
 
+        [Column("ProductUniqueId")]
+        public Guid UniqueId { get; set; }
     }
 }
