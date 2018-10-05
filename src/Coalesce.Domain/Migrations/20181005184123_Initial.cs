@@ -14,12 +14,12 @@ namespace Coalesce.Domain.Migrations
                 {
                     CompanyId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Address1 = table.Column<string>(nullable: true),
-                    Address2 = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    State = table.Column<string>(nullable: true),
-                    ZipCode = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    Address1 = table.Column<string>(maxLength: 200, nullable: true),
+                    Address2 = table.Column<string>(maxLength: 200, nullable: true),
+                    City = table.Column<string>(maxLength: 200, nullable: true),
+                    State = table.Column<string>(maxLength: 100, nullable: true),
+                    ZipCode = table.Column<string>(maxLength: 20, nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -33,11 +33,11 @@ namespace Coalesce.Domain.Migrations
                 {
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    State = table.Column<string>(nullable: true),
-                    PostalCode = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    Address = table.Column<string>(maxLength: 200, nullable: true),
+                    City = table.Column<string>(maxLength: 100, nullable: true),
+                    State = table.Column<string>(maxLength: 50, nullable: true),
+                    PostalCode = table.Column<string>(maxLength: 50, nullable: true),
                     ProductUniqueId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
@@ -79,13 +79,13 @@ namespace Coalesce.Domain.Migrations
                 {
                     CaseKey = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(maxLength: 250, nullable: true),
                     Description = table.Column<string>(nullable: true),
                     OpenedAt = table.Column<DateTimeOffset>(nullable: false),
                     AssignedToId = table.Column<int>(nullable: true),
                     ReportedById = table.Column<int>(nullable: true),
                     Attachment = table.Column<byte[]>(nullable: true),
-                    Severity = table.Column<string>(nullable: true),
+                    Severity = table.Column<string>(maxLength: 20, nullable: false),
                     Status = table.Column<int>(nullable: false),
                     DevTeamAssignedId = table.Column<int>(nullable: true),
                     Duration = table.Column<TimeSpan>(nullable: false)

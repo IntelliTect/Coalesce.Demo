@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Coalesce.Domain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181003234414_Initial")]
+    [Migration("20181005184123_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,11 +41,14 @@ namespace Coalesce.Domain.Migrations
 
                     b.Property<int?>("ReportedById");
 
-                    b.Property<string>("Severity");
+                    b.Property<string>("Severity")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
                     b.Property<int>("Status");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .HasMaxLength(250);
 
                     b.HasKey("CaseKey");
 
@@ -81,19 +84,26 @@ namespace Coalesce.Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address1");
+                    b.Property<string>("Address1")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Address2");
+                    b.Property<string>("Address2")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("City");
+                    b.Property<string>("City")
+                        .HasMaxLength(200);
 
                     b.Property<bool>("IsDeleted");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("State");
+                    b.Property<string>("State")
+                        .HasMaxLength(100);
 
-                    b.Property<string>("ZipCode");
+                    b.Property<string>("ZipCode")
+                        .HasMaxLength(20);
 
                     b.HasKey("CompanyId");
 
@@ -141,15 +151,21 @@ namespace Coalesce.Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("City");
+                    b.Property<string>("City")
+                        .HasMaxLength(100);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("PostalCode");
+                    b.Property<string>("PostalCode")
+                        .HasMaxLength(50);
 
-                    b.Property<string>("State");
+                    b.Property<string>("State")
+                        .HasMaxLength(50);
 
                     b.Property<Guid>("UniqueId")
                         .HasColumnName("ProductUniqueId");

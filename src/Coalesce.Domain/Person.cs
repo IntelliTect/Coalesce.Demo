@@ -100,7 +100,7 @@ namespace Coalesce.Domain
         [Hidden]
         public PersonStats PersonStats => new PersonStats { Name = Name, Height = 10, Weight = 20 };
 
-        [InternalUse]
+        [Hidden]
         public byte[] ProfilePic { get; set; }
 
         /// <summary>

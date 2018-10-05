@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using IntelliTect.Coalesce.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using IntelliTect.Coalesce;
@@ -12,11 +13,30 @@ namespace Coalesce.Domain
     public class Company
     {
         public int CompanyId { get; set; }
+
+        [MaxLength(200)]
+        [StringLength(200)]
+        [Required]
         public string Name { get; set; }
+
+        [MaxLength(200)]
+        [StringLength(200)]
         public string Address1 { get; set; }
+
+        [MaxLength(200)]
+        [StringLength(200)]
         public string Address2 { get; set; }
+
+        [MaxLength(200)]
+        [StringLength(200)]
         public string City { get; set; }
+
+        [MaxLength(100)]
+        [StringLength(100)]
         public string State { get; set; }
+
+        [MaxLength(20)]
+        [StringLength(20)]
         public string ZipCode { get; set; }
 
         public bool IsDeleted { get; set; }

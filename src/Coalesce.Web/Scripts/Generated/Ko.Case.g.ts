@@ -235,8 +235,9 @@ module ViewModels {
         public setupValidation(): void {
             if (this.errors !== null) return;
             this.errors = ko.validation.group([
-                this.title.extend({ required: {params: true, message: "You must enter a title for the case."} }),
+                this.title.extend({ required: {params: true, message: "You must enter a title for the case."}, maxLength: 250 }),
                 this.openedAt.extend({ moment: { unix: true } }),
+                this.severity.extend({ required: {params: true, message: "Severity is required."}, maxLength: 20 }),
             ]);
             this.warnings = ko.validation.group([
             ]);
