@@ -14,6 +14,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using IntelliTect.Coalesce;
 using Coalesce.Domain.Services;
+using Coalesce.Web.Models;
 
 namespace Coalesce.Web
 {
@@ -46,6 +47,12 @@ namespace Coalesce.Web
                 .UseTimeZone(TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time"))
             );
 
+            var internalConfig = new InternalConfig();
+
+            Configuration.Bind(internalConfig);
+
+            services.AddSingleton<IInternalConfig, InternalConfig>(provider => internalConfig);
+
             services.AddCors();
 
             services.AddMvc().AddJsonOptions(options =>
@@ -59,6 +66,8 @@ namespace Coalesce.Web
 
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
+
+            services.AddHttpClient();
 
             services.AddScoped<IWeatherService, WeatherService>();
 

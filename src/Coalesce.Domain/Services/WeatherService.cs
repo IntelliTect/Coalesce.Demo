@@ -1,14 +1,14 @@
-﻿using IntelliTect.Coalesce;
-using IntelliTect.Coalesce.DataAnnotations;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
+using IntelliTect.Coalesce;
+using Newtonsoft.Json;
 
 namespace Coalesce.Domain.Services
 {
-    [Coalesce, Service]
+    [Coalesce]
+    [Service]
     public interface IWeatherService
     {
         WeatherData GetWeather(AppDbContext parameterDbContext, Location location, DateTimeOffset? dateTime);
@@ -18,22 +18,61 @@ namespace Coalesce.Domain.Services
 
     public class WeatherService : IWeatherService
     {
-        private readonly AppDbContext db;
+        private readonly HttpClient _client;
+        private readonly IInternalConfig _config;
 
-        public WeatherService(AppDbContext db)
+        public WeatherService(IInternalConfig config,  IHttpClientFactory factory)
         {
-            this.db = db;
+            _config = config;
+            if (string.IsNullOrWhiteSpace(_config.OpenWeatherServiceToken))
+            {
+                throw new ArgumentNullException(nameof(IInternalConfig.OpenWeatherServiceToken));
+            }
+
+            _client = factory.CreateClient();
+            _client.BaseAddress = new Uri("http://api.openweathermap.org");
         }
 
 
         public WeatherData GetWeather(AppDbContext parameterDbContext, Location location, DateTimeOffset? dateTime)
         {
-            throw new NotImplementedException();
+            Task<WeatherData> task =
+                Task.Run(async () => await GetWeatherAsync(parameterDbContext, location, dateTime));
+            return task.Result;
         }
 
-        public async Task<WeatherData> GetWeatherAsync (AppDbContext parameterDbContext, Location location, DateTimeOffset? dateTime)
+        public async Task<WeatherData> GetWeatherAsync(AppDbContext parameterDbContext, Location location,
+            DateTimeOffset? dateTime)
         {
-            throw new NotImplementedException();;
+            string requestUrl;
+            if (location == null)
+            {
+                throw new ArgumentNullException(nameof(location));
+            }
+
+            if (false == string.IsNullOrWhiteSpace(location.Zip))
+            {
+                requestUrl = $"/data/2.5/weather?zip={location.Zip}&units=imperial&APPID={_config.OpenWeatherServiceToken}";
+            }
+            else if (false == string.IsNullOrWhiteSpace(location.City))
+            {
+                requestUrl = $"/data/2.5/weather?q={location.City}&units=imperial&APPID={_config.OpenWeatherServiceToken}";
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(location),
+                    "The location doesn't have either a Zip or City value.");
+            }
+
+
+            HttpResponseMessage response = await _client.GetAsync(requestUrl);
+            response.EnsureSuccessStatusCode();
+
+            string stringResult = await response.Content.ReadAsStringAsync();
+            var rawWeather = JsonConvert.DeserializeObject<OpenWeatherResponse>(stringResult);
+
+            return new WeatherData
+                {Humidity = rawWeather.Main.Humidity, Location = location, TempFahrenheit = rawWeather.Main.Temp};
         }
     }
 
@@ -49,7 +88,28 @@ namespace Coalesce.Domain.Services
         public double TempFahrenheit { get; set; }
 
         public double Humidity { get; set; }
-        
+
         public Location Location { get; set; }
+    }
+
+    internal class OpenWeatherResponse
+    {
+        public string Name { get; set; }
+
+        public IEnumerable<WeatherDescription> Weather { get; set; }
+
+        public Main Main { get; set; }
+    }
+
+    internal class WeatherDescription
+    {
+        public string Main { get; set; }
+        public string Description { get; set; }
+    }
+
+    internal class Main
+    {
+        public double Temp { get; set; }
+        public double Humidity { get; set; }
     }
 }
