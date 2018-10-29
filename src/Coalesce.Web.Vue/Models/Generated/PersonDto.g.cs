@@ -26,6 +26,7 @@ namespace Coalesce.Web.Vue.Models
         public System.DateTime? LastBath { get; set; }
         public System.DateTimeOffset? NextUpgrade { get; set; }
         public Coalesce.Web.Vue.Models.PersonStatsDtoGen PersonStats { get; set; }
+        public byte[] ProfilePic { get; set; }
         public string Name { get; set; }
         public int? CompanyId { get; set; }
         public Coalesce.Web.Vue.Models.CompanyDtoGen Company { get; set; }
@@ -49,6 +50,7 @@ namespace Coalesce.Web.Vue.Models
             this.BirthDate = obj.BirthDate;
             this.LastBath = obj.LastBath;
             this.NextUpgrade = obj.NextUpgrade;
+            this.ProfilePic = obj.ProfilePic;
             this.Name = obj.Name;
             this.CompanyId = obj.CompanyId;
             var propValCasesAssigned = obj.CasesAssigned;
@@ -101,6 +103,7 @@ namespace Coalesce.Web.Vue.Models
             entity.BirthDate = BirthDate;
             entity.LastBath = LastBath;
             entity.NextUpgrade = NextUpgrade;
+            entity.ProfilePic = ProfilePic;
             entity.CompanyId = (CompanyId ?? entity.CompanyId);
         }
     }

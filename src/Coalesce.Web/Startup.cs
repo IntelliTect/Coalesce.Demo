@@ -5,13 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Coalesce.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using IntelliTect.Coalesce.TypeDefinition;
 using IntelliTect.Coalesce.DataAnnotations;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using System;
-using System.Linq;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using IntelliTect.Coalesce;
 using Coalesce.Domain.Services;
 using Coalesce.Web.Models;
@@ -59,15 +56,18 @@ namespace Coalesce.Web
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
-                var resolver = options.SerializerSettings.ContractResolver;
-                if (resolver != null) (resolver as DefaultContractResolver).NamingStrategy = null;
-
+                if (options.SerializerSettings.ContractResolver is DefaultContractResolver resolver)
+                {
+                    resolver.NamingStrategy = null;
+                }
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
 
             services.AddHttpClient();
+
+            services.AddMemoryCache();
 
             services.AddScoped<IWeatherService, WeatherService>();
 
