@@ -264,11 +264,10 @@ export class ProductApiClient extends ModelApiClient<$models.Product> {
 
 export class WeatherServiceApiClient extends ServiceApiClient<typeof $metadata.WeatherService> {
   constructor() { super($metadata.WeatherService) }
-  public getWeather(location: $models.Location | null, dateTime: Date | null, $config?: AxiosRequestConfig) {
+  public getWeather(location: $models.Location | null, $config?: AxiosRequestConfig) {
     const $method = this.$metadata.methods.getWeather
     const $params = this.$mapParams($method, {
       location,
-      dateTime,
     })
     return AxiosClient
       .post(
@@ -279,11 +278,10 @@ export class WeatherServiceApiClient extends ServiceApiClient<typeof $metadata.W
       .then<AxiosResponse<ItemResult<$models.WeatherData>>>(r => this.$hydrateItemResult(r, $method.return))
   }
   
-  public getWeatherAsync(location: $models.Location | null, dateTime: Date | null, $config?: AxiosRequestConfig) {
+  public getWeatherAsync(location: $models.Location | null, $config?: AxiosRequestConfig) {
     const $method = this.$metadata.methods.getWeatherAsync
     const $params = this.$mapParams($method, {
       location,
-      dateTime,
     })
     return AxiosClient
       .post(

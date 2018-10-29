@@ -559,6 +559,12 @@ export const Person = domain.types.Person = {
       role: "value",
       dontSerialize: true,
     },
+    profilePic: {
+      name: "profilePic",
+      displayName: "Profile Pic",
+      type: "string",
+      role: "value",
+    },
     name: {
       name: "name",
       displayName: "Name",
@@ -1104,12 +1110,6 @@ export const WeatherService = domain.services.WeatherService = {
           get typeDef() { return (domain.types.Location as ObjectType) },
           role: "value",
         },
-        dateTime: {
-          name: "dateTime",
-          displayName: "Date Time",
-          type: "date",
-          role: "value",
-        },
       },
       return: {
         name: "$return",
@@ -1129,12 +1129,6 @@ export const WeatherService = domain.services.WeatherService = {
           displayName: "Location",
           type: "object",
           get typeDef() { return (domain.types.Location as ObjectType) },
-          role: "value",
-        },
-        dateTime: {
-          name: "dateTime",
-          displayName: "Date Time",
-          type: "date",
           role: "value",
         },
       },
