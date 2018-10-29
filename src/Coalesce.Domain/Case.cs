@@ -42,6 +42,8 @@ namespace Coalesce.Domain
         [ListText]
         [ClientValidation(IsRequired = true, ErrorMessage = "You must enter a title for the case.")]
         [Search(IsSplitOnSpaces = true, SearchMethod = SearchAttribute.SearchMethods.Contains)]
+        [MaxLength(250)]
+        [StringLength(250)]
         public string Title { get; set; }
 
         [Search]
@@ -65,6 +67,9 @@ namespace Coalesce.Domain
 
         public byte[] Attachment { get; set; }
 
+        [MaxLength(20)]
+        [StringLength(20)]
+        [Required]
         public string Severity { get; set; }
 
         public Statuses Status { get; set; }

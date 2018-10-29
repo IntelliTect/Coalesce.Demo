@@ -72,6 +72,7 @@ module ViewModels {
         public lastBath: KnockoutObservable<moment.Moment | null> = ko.observable(null);
         public nextUpgrade: KnockoutObservable<moment.Moment | null> = ko.observable(null);
         public personStats: KnockoutObservable<ViewModels.PersonStats | null> = ko.observable(null);
+        public profilePic: KnockoutObservable<string | null> = ko.observable(null);
         
         /** Calculated name of the person. eg., Mr. Michael Stokesbary. */
         public name: KnockoutObservable<string | null> = ko.observable(null);
@@ -384,6 +385,7 @@ module ViewModels {
             else if (this.nextUpgrade() == null || this.nextUpgrade()!.valueOf() != new Date(data.nextUpgrade).getTime()){
                 this.nextUpgrade(moment(new Date(data.nextUpgrade)));
             }
+            this.profilePic(data.profilePic);
             this.name(data.name);
             this.companyId(data.companyId);
             if (this.coalesceConfig.onLoadFromDto()){
@@ -410,6 +412,7 @@ module ViewModels {
             else dto.lastBath = this.lastBath()!.format('YYYY-MM-DDTHH:mm:ss');
             if (!this.nextUpgrade()) dto.nextUpgrade = null;
             else dto.nextUpgrade = this.nextUpgrade()!.format('YYYY-MM-DDTHH:mm:ssZZ');
+            dto.profilePic = this.profilePic();
             dto.companyId = this.companyId();
             if (!dto.companyId && this.company()) {
                 dto.companyId = this.company()!.companyId();
@@ -521,6 +524,7 @@ module ViewModels {
             self.birthDate.subscribe(self.autoSave);
             self.lastBath.subscribe(self.autoSave);
             self.nextUpgrade.subscribe(self.autoSave);
+            self.profilePic.subscribe(self.autoSave);
             self.companyId.subscribe(self.autoSave);
             self.company.subscribe(self.autoSave);
             

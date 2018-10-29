@@ -22,8 +22,20 @@
                 <div class="col-md-8 prop-name">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.Name))</div>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label">Details</label>
-                <div class="col-md-8 prop-details">@(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.Details, false))</div>
+                <label class="col-md-4 control-label">Address</label>
+                <div class="col-md-8 prop-address">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.Address))</div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">City</label>
+                <div class="col-md-8 prop-city">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.City))</div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">State</label>
+                <div class="col-md-8 prop-state">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.State))</div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Postal Code</label>
+                <div class="col-md-8 prop-postalCode">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.PostalCode))</div>
             </div>
             <div class="form-group">
                 <label class="col-md-4 control-label">Unique Id</label>

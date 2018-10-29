@@ -18,6 +18,10 @@ module ListViewModels {
         public filter: {
             productId?: string;
             name?: string;
+            address?: string;
+            city?: string;
+            state?: string;
+            postalCode?: string;
             uniqueId?: string;
         } | null = null;
         

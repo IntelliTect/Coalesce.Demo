@@ -59,9 +59,21 @@
                     <dd>
                         @(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.Name, false))
                     </dd>
-                    <dt>Details</dt>
+                    <dt>Address</dt>
                     <dd>
-                        @(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.Details, false))
+                        @(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.Address, false))
+                    </dd>
+                    <dt>City</dt>
+                    <dd>
+                        @(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.City, false))
+                    </dd>
+                    <dt>State</dt>
+                    <dd>
+                        @(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.State, false))
+                    </dd>
+                    <dt>Postal Code</dt>
+                    <dd>
+                        @(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.PostalCode, false))
                     </dd>
                     <dt>Unique Id</dt>
                     <dd>

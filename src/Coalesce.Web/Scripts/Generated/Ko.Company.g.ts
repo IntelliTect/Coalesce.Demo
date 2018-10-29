@@ -128,6 +128,12 @@ module ViewModels {
         public setupValidation(): void {
             if (this.errors !== null) return;
             this.errors = ko.validation.group([
+                this.name.extend({ required: {params: true, message: "Name is required."}, maxLength: 200 }),
+                this.address1.extend({ maxLength: 200 }),
+                this.address2.extend({ maxLength: 200 }),
+                this.city.extend({ maxLength: 200 }),
+                this.state.extend({ maxLength: 100 }),
+                this.zipCode.extend({ maxLength: 20 }),
             ]);
             this.warnings = ko.validation.group([
             ]);

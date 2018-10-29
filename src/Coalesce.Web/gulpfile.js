@@ -164,35 +164,16 @@ gulp.task('default', ['build', 'watch'], function () {
 });
 
 
-var coalesceBuildDir = `${require('os').tmpdir()}/CoalesceExe`;
-var dotnetCoalesce = `dotnet "${coalesceBuildDir}/dotnet-coalesce.dll"`;
+var dotnetCoalesce = 'dotnet coalesce';
 
-gulp.task('coalesce:cleanbuild', function (cb) {
-    return del(coalesceBuildDir, { force: true });
-});
 
-gulp.task('coalesce:build', ['coalesce:cleanbuild'], shell.task([
-        'dotnet restore --verbosity quiet "../IntelliTect.Coalesce.Cli"',
-        `dotnet build "../IntelliTect.Coalesce.Cli/IntelliTect.Coalesce.Cli.csproj" -o "${coalesceBuildDir}" -f netcoreapp2.1`
-    ],{ verbose: true }
-));
-
-// Build is required every time because the templates are compiled into the dll.
-// Sometimes the CoalesceExe folder doesn't get new DLLs and needs to have all files deleted.
-gulp.task('coalesce-ko', ['coalesce:build'], shell.task(
-    `${dotnetCoalesce} ../../coalesce-ko.json `,
-    // `${dotnetCoalesce} ../../coalesce-ko.json --verbosity debug`,
+gulp.task('coalesce-ko', shell.task(
+    'dotnet coalesce ../../coalesce-ko.json',
     { verbose: true }
 ));
 
-gulp.task('coalesce-vue', ['coalesce:build'], shell.task(
-    `${dotnetCoalesce} ../../coalesce-vue.json `,
-    // `${dotnetCoalesce} ../../coalesce-vue.json --verbosity debug `,
+gulp.task('coalesce-vue', shell.task(
+    'dotnet coalesce ../../coalesce-vue.json',
     { verbose: true }
 ));
 
-
-gulp.task('coalesce:debug', ['coalesce:build'], shell.task(
-    `${dotnetCoalesce} --debug --verbosity debug`,
-    { verbose: true }
-));

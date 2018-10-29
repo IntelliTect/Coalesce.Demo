@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using IntelliTect.Coalesce.DataAnnotations;
 
@@ -12,33 +13,28 @@ namespace Coalesce.Domain
         public int ProductId { get; set; }
 
         [Search(SearchMethod = SearchAttribute.SearchMethods.Contains)]
+        [MaxLength(200)]
+        [StringLength(200)]
+        [Required]
         public string Name { get; set; }
 
-        public ProductDetails Details { get; set; }
+        [MaxLength(200)]
+        [StringLength(200)]
+        public string Address { get; set; }
+
+        [MaxLength(100)]
+        [StringLength(100)]
+        public string City { get; set; }
+
+        [MaxLength(50)]
+        [StringLength(50)]
+        public string State { get; set; }
+
+        [MaxLength(50)]
+        [StringLength(50)]
+        public string PostalCode { get; set; }
 
         [Column("ProductUniqueId")]
         public Guid UniqueId { get; set; }
-    }
-
-    public class ProductDetails
-    {
-        [ListText]
-        public StreetAddress ManufacturingAddress { get; set; }
-
-        public StreetAddress CompanyHqAddress { get; set; }
-
-    }
-
-    public class StreetAddress
-    {
-        [ListText]
-        public string Address { get; set; }
-
-        public string City { get; set; }
-
-        public string State { get; set; }
-
-        public string PostalCode { get; set; }
-
     }
 }

@@ -69,9 +69,21 @@
                             Name
                             <i class="pull-right fa" data-bind="css:{'fa-caret-up': orderBy() == 'Name', 'fa-caret-down': orderByDescending() == 'Name'}"></i>
                         </th>
-                        <th class="sortable-header" data-bind="click: function(){orderByToggle('Details')}">
-                            Details
-                            <i class="pull-right fa" data-bind="css:{'fa-caret-up': orderBy() == 'Details', 'fa-caret-down': orderByDescending() == 'Details'}"></i>
+                        <th class="sortable-header" data-bind="click: function(){orderByToggle('Address')}">
+                            Address
+                            <i class="pull-right fa" data-bind="css:{'fa-caret-up': orderBy() == 'Address', 'fa-caret-down': orderByDescending() == 'Address'}"></i>
+                        </th>
+                        <th class="sortable-header" data-bind="click: function(){orderByToggle('City')}">
+                            City
+                            <i class="pull-right fa" data-bind="css:{'fa-caret-up': orderBy() == 'City', 'fa-caret-down': orderByDescending() == 'City'}"></i>
+                        </th>
+                        <th class="sortable-header" data-bind="click: function(){orderByToggle('State')}">
+                            State
+                            <i class="pull-right fa" data-bind="css:{'fa-caret-up': orderBy() == 'State', 'fa-caret-down': orderByDescending() == 'State'}"></i>
+                        </th>
+                        <th class="sortable-header" data-bind="click: function(){orderByToggle('PostalCode')}">
+                            Postal Code
+                            <i class="pull-right fa" data-bind="css:{'fa-caret-up': orderBy() == 'PostalCode', 'fa-caret-down': orderByDescending() == 'PostalCode'}"></i>
                         </th>
                         <th class="sortable-header" data-bind="click: function(){orderByToggle('UniqueId')}">
                             Unique Id
@@ -86,13 +98,19 @@
                         @if (@ViewBag.Editable)
                         {
                             <td class="prop-name">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.Name))</td>
-                            <td class="prop-details">@(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.Details, true))</td>
+                            <td class="prop-address">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.Address))</td>
+                            <td class="prop-city">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.City))</td>
+                            <td class="prop-state">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.State))</td>
+                            <td class="prop-postalCode">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.PostalCode))</td>
                             <td class="prop-uniqueId">@(Knockout.InputFor<Coalesce.Domain.Product>(p => p.UniqueId))</td>
                         }
                         else
                         {
                             <td class="prop-name">@(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.Name, true))</td>
-                            <td class="prop-details">@(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.Details, true))</td>
+                            <td class="prop-address">@(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.Address, true))</td>
+                            <td class="prop-city">@(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.City, true))</td>
+                            <td class="prop-state">@(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.State, true))</td>
+                            <td class="prop-postalCode">@(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.PostalCode, true))</td>
                             <td class="prop-uniqueId">@(Knockout.DisplayFor<Coalesce.Domain.Product>(p => p.UniqueId, true))</td>
                         }
                         <td>

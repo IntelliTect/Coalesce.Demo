@@ -16,7 +16,10 @@ namespace Coalesce.Web.Models
 
         public int? ProductId { get; set; }
         public string Name { get; set; }
-        public Coalesce.Web.Models.ProductDetailsDtoGen Details { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
         public System.Guid? UniqueId { get; set; }
 
         /// <summary>
@@ -31,10 +34,11 @@ namespace Coalesce.Web.Models
 
             this.ProductId = obj.ProductId;
             this.Name = obj.Name;
+            this.Address = obj.Address;
+            this.City = obj.City;
+            this.State = obj.State;
+            this.PostalCode = obj.PostalCode;
             this.UniqueId = obj.UniqueId;
-
-            this.Details = obj.Details.MapToDto<Coalesce.Domain.ProductDetails, ProductDetailsDtoGen>(context, tree?[nameof(this.Details)]);
-
         }
 
         /// <summary>
@@ -48,6 +52,10 @@ namespace Coalesce.Web.Models
 
             entity.ProductId = (ProductId ?? entity.ProductId);
             entity.Name = Name;
+            entity.Address = Address;
+            entity.City = City;
+            entity.State = State;
+            entity.PostalCode = PostalCode;
             entity.UniqueId = (UniqueId ?? entity.UniqueId);
         }
     }

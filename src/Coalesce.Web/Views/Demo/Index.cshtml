@@ -50,6 +50,8 @@
         <h2>Weather</h2>
 
         <dl class="dl-horizontal" data-bind="with: weatherService.getWeather.result">
+            <dt>Location</dt>
+            <dd><span data-bind="text: location().city"></span>, <span data-bind="text: location().state"></span></dd>
             <dt>Temp</dt>
             <dd data-bind="text: tempFahrenheit"></dd>
             <dt>Humidity</dt>
