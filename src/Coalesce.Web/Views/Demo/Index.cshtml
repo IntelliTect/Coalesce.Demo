@@ -49,7 +49,7 @@
     <div class="card-body">
         <h2>Weather</h2>
 
-        <dl class="dl-horizontal" data-bind="with: weatherService.getWeather.result">
+        <dl class="dl-horizontal" data-bind="with: weatherService.getWeatherAsync.result">
             <dt>Location</dt>
             <dd><span data-bind="text: location().city"></span>, <span data-bind="text: location().state"></span></dd>
             <dt>Temp</dt>
