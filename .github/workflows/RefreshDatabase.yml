@@ -18,8 +18,16 @@ jobs:
           packages: pyodbc
       - run: |
           import os
+          import pyodbc
           with pyodbc.connect(os.environ['CONNECTION_STRING']) as conn:
             with conn.cursor() as cursor:
-        
+                dropFile = open("./RefreshDB/DropValues.sql", "r")
+                insertFile = open("./RefreshDB/InsertSeededValues.sql", "r")
+
+                dropQuery = dropFile.read()
+                insertQuery = insertFile.read()
+
+                cursor.execute(dropQuery)
+                cursor.execute(insertQuery)  
             
           
