@@ -14,7 +14,7 @@ INSERT [dbo].[Company] ([CompanyId], [Address1], [Address2], [City], [Name], [St
 
 INSERT [dbo].[Company] ([CompanyId], [Address1], [Address2], [City], [Name], [State], [ZipCode], [IsDeleted]) VALUES (7, N'1296 Beach 37th Street ', N'', N'Mechanicville', N'GMC Recycling', N'Pennsylvania', N'87865', 1)
 
-INSERT [dbo].[Company] ([CompanyId], [Address1], [Address2], [City], [Name], [State], [ZipCode], [IsDeleted]) VALUES (8, N'1871 50th Street ', N'Studio 210', N'Portland', N'Franks Shipping', N'Oren', N'858', 1)
+INSERT [dbo].[Company] ([CompanyId], [Address1], [Address2], [City], [Name], [State], [ZipCode], [IsDeleted]) VALUES (8, N'1871 50th Street ', N'Studio 210', N'Portland', N'Franks Shipping', N'Oregon', N'858', 1)
 
 INSERT [dbo].[Company] ([CompanyId], [Address1], [Address2], [City], [Name], [State], [ZipCode], [IsDeleted]) VALUES (9, N'3665 Gravesend Neck Road ', N'852F', N'Pentict', N'Ford Fishing', N'District of Columbia', N'1629', 1)
 
@@ -38,7 +38,7 @@ INSERT [dbo].[Person] ([PersonId], [CompanyId], [Email], [FirstName], [Gender], 
 
 INSERT [dbo].[Person] ([PersonId], [CompanyId], [Email], [FirstName], [Gender], [LastName], [ProfilePic], [Title], [BirthDate], [LastBath], [NextUpgrade]) VALUES (17, 8, N'test605146959@test.com', N'Victoria', 1, N'Stewart', NULL, 0, CAST(N'1908-04-19T20:03:26.0000000' AS DateTime2), CAST(N'2000-02-11T20:13:54.0000000' AS DateTime2), NULL)
 
-INSERT [dbo].[Person] ([PersonId], [CompanyId], [Email], [FirstName], [Gender], [LastName], [ProfilePic], [Title], [BirthDate], [LastBath], [NextUpgrade]) VALUES (18, 7, N'Danielle.Baker@gmail.com', N'Kaylee', 1, N'nzales', NULL, 1, CAST(N'1956-02-21T14:39:47.0000000' AS DateTime2), CAST(N'1990-06-25T00:50:25.0000000' AS DateTime2), NULL)
+INSERT [dbo].[Person] ([PersonId], [CompanyId], [Email], [FirstName], [Gender], [LastName], [ProfilePic], [Title], [BirthDate], [LastBath], [NextUpgrade]) VALUES (18, 7, N'Danielle.Baker@gmail.com', N'Kaylee', 1, N'Gonzales', NULL, 1, CAST(N'1956-02-21T14:39:47.0000000' AS DateTime2), CAST(N'1990-06-25T00:50:25.0000000' AS DateTime2), NULL)
 
 INSERT [dbo].[Person] ([PersonId], [CompanyId], [Email], [FirstName], [Gender], [LastName], [ProfilePic], [Title], [BirthDate], [LastBath], [NextUpgrade]) VALUES (19, 6, N'Isabel.Wood@live.com', N'William', 1, N'Parker', NULL, 0, CAST(N'1922-05-23T00:42:28.0000000' AS DateTime2), CAST(N'1965-10-12T01:12:50.0000000' AS DateTime2), NULL)
 
@@ -58,7 +58,7 @@ INSERT [dbo].[Person] ([PersonId], [CompanyId], [Email], [FirstName], [Gender], 
 
 INSERT [dbo].[Person] ([PersonId], [CompanyId], [Email], [FirstName], [Gender], [LastName], [ProfilePic], [Title], [BirthDate], [LastBath], [NextUpgrade]) VALUES (27, 8, N'Mark.Harris@telus.net', N'Jenna', 0, N'Wilson', NULL, 2, CAST(N'2018-07-13T21:45:48.0000000' AS DateTime2), CAST(N'1949-09-25T18:43:47.0000000' AS DateTime2), NULL)
 
-INSERT [dbo].[Person] ([PersonId], [CompanyId], [Email], [FirstName], [Gender], [LastName], [ProfilePic], [Title], [BirthDate], [LastBath], [NextUpgrade]) VALUES (28, 7, N'Devin.nzalez@microsoft.com', N'Lakeshia', 0, N'Hernandez', NULL, 2, CAST(N'1988-11-10T01:28:51.0000000' AS DateTime2), CAST(N'1968-01-08T12:04:41.0000000' AS DateTime2), NULL)
+INSERT [dbo].[Person] ([PersonId], [CompanyId], [Email], [FirstName], [Gender], [LastName], [ProfilePic], [Title], [BirthDate], [LastBath], [NextUpgrade]) VALUES (28, 7, N'Devin.Gonzalez@microsoft.com', N'Lakeshia', 0, N'Hernandez', NULL, 2, CAST(N'1988-11-10T01:28:51.0000000' AS DateTime2), CAST(N'1968-01-08T12:04:41.0000000' AS DateTime2), NULL)
 
 INSERT [dbo].[Person] ([PersonId], [CompanyId], [Email], [FirstName], [Gender], [LastName], [ProfilePic], [Title], [BirthDate], [LastBath], [NextUpgrade]) VALUES (29, 6, N'Carlos.Brugger@rogers.ca', N'Lorenza', 1, N'Coleman', NULL, 2, CAST(N'1953-09-26T04:21:21.0000000' AS DateTime2), CAST(N'1974-09-23T17:56:30.0000000' AS DateTime2), NULL)
 
@@ -68,7 +68,7 @@ SET IDENTITY_INSERT [dbo].[Person] OFF
 
 SET IDENTITY_INSERT [dbo].[Case] ON 
 
-INSERT [dbo].[Case] ([CaseKey], [AssignedToId], [Attachment], [Description], [OpenedAt], [ReportedById], [Severity], [Status], [Title], [DevTeamAssignedId], [Duration]) VALUES (7, 15, NULL, N'I t an error message. What''s your fax number so I can send you the Polaroid I took of it?', CAST(N'2020-12-15T16:55:06.0000000-08:00' AS DateTimeOffset), 28, N'Medium', 2, N'Powerpoint is broken', 4, CAST(N'00:00:00' AS Time))
+INSERT [dbo].[Case] ([CaseKey], [AssignedToId], [Attachment], [Description], [OpenedAt], [ReportedById], [Severity], [Status], [Title], [DevTeamAssignedId], [Duration]) VALUES (7, 15, NULL, N'I got an error message. What''s your fax number so I can send you the Polaroid I took of it?', CAST(N'2020-12-15T16:55:06.0000000-08:00' AS DateTimeOffset), 28, N'Medium', 2, N'Powerpoint is broken', 4, CAST(N'00:00:00' AS Time))
 
 INSERT [dbo].[Case] ([CaseKey], [AssignedToId], [Attachment], [Description], [OpenedAt], [ReportedById], [Severity], [Status], [Title], [DevTeamAssignedId], [Duration]) VALUES (9, 28, NULL, N'My chair isn''t comfortable enough', CAST(N'2021-05-29T19:51:47.0000000-07:00' AS DateTimeOffset), 11, N'Low', 1, N'Issue with Office', 4, CAST(N'00:00:00' AS Time))
 
@@ -80,7 +80,7 @@ INSERT [dbo].[Case] ([CaseKey], [AssignedToId], [Attachment], [Description], [Op
 
 INSERT [dbo].[Case] ([CaseKey], [AssignedToId], [Attachment], [Description], [OpenedAt], [ReportedById], [Severity], [Status], [Title], [DevTeamAssignedId], [Duration]) VALUES (13, 13, NULL, N'Excel doesn''t automatically fill out itself, could be better', CAST(N'2021-05-24T22:26:50.0000000-07:00' AS DateTimeOffset), 29, N'Medium', 0, N'Excel doesn''t work', 4, CAST(N'00:00:00' AS Time))
 
-INSERT [dbo].[Case] ([CaseKey], [AssignedToId], [Attachment], [Description], [OpenedAt], [ReportedById], [Severity], [Status], [Title], [DevTeamAssignedId], [Duration]) VALUES (14, 23, NULL, N'I t an error message. What''s your fax number so I can send you the Polaroid I took of it?', CAST(N'2020-01-02T18:07:28.0000000-08:00' AS DateTimeOffset), 27, N'Medium', 3, N'Problem with Excel', 3, CAST(N'00:00:00' AS Time))
+INSERT [dbo].[Case] ([CaseKey], [AssignedToId], [Attachment], [Description], [OpenedAt], [ReportedById], [Severity], [Status], [Title], [DevTeamAssignedId], [Duration]) VALUES (14, 23, NULL, N'I got an error message. What''s your fax number so I can send you the Polaroid I took of it?', CAST(N'2020-01-02T18:07:28.0000000-08:00' AS DateTimeOffset), 27, N'Medium', 3, N'Problem with Excel', 3, CAST(N'00:00:00' AS Time))
 
 INSERT [dbo].[Case] ([CaseKey], [AssignedToId], [Attachment], [Description], [OpenedAt], [ReportedById], [Severity], [Status], [Title], [DevTeamAssignedId], [Duration]) VALUES (15, 29, NULL, N'The editor isn''t just writing the code for me, my hands are getting sore', CAST(N'2020-10-30T03:06:56.0000000-07:00' AS DateTimeOffset), 13, N'High', 1, N'Problem with Visual Studio 2013', 2, CAST(N'00:00:00' AS Time))
 
