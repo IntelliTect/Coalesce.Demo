@@ -7,8 +7,6 @@ on:
 jobs:
   RefreshData:
     runs-on: ubuntu-latest
-    env:
-      CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }} 
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python
@@ -17,12 +15,7 @@ jobs:
         with:
           packages: pyodbc
       - run: |
-          dropFile = open("./RefreshDB/DropValues.sql", "r")
-          insertFile = open("./RefreshDB/InsertSeededValues.sql", "r")
+          pwd
+          cd RefreshDB
+          python RefreshDatabase.py ${{ secrets.CONNECTION_STRING }} 
 
-          dropQuery = dropFile.read()
-          insertQuery = insertFile.read()
-
-          print(dropQuery)
-          print(insertQuery)
-          
