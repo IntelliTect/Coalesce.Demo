@@ -17,8 +17,6 @@ jobs:
         with:
           packages: pyodbc
       - run: |
-          import os
-          print(os.environ)
           dropFile = open("./RefreshDB/DropValues.sql", "r")
           insertFile = open("./RefreshDB/InsertSeededValues.sql", "r")
 
