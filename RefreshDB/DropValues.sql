@@ -1,0 +1,5 @@
+Delete From [CaseProduct]
+Delete From [Case]
+Delete From [Person]
+Delete From [Company]
+Delete From [Product]
