@@ -3,7 +3,7 @@
   "name": "CoalesceDemo",
   "private": true,
   "dependencies": {
-    "moment": "^2.20.1",
+    "moment": "^2.29.2",
     "bootswatch": "3.3.7",
     "knockout": "3.4.2",
     "knockout.validation": "2.0.3",
