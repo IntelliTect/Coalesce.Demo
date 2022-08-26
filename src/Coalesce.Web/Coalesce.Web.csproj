@@ -15,7 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Coalesce.Domain\Coalesce.Domain.csproj" />
     <PackageReference Include="IntelliTect.Coalesce" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.22" />
     <PackageReference Include="IntelliTect.Coalesce.Knockout" Version="2.1.0" />
   </ItemGroup>
 
