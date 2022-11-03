@@ -22,7 +22,7 @@
     "@types/knockout.validation": "0.0.36",
     "@types/select2": "4.0.41",
     "@types/moment": "2.11.29",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-flatten": "^0.3.1",
